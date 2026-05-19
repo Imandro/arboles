@@ -3,28 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador de Árboles Plantados</title>
+    <title>Contador de Árboles Plantados - UNAN León</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <img src="https://sleepnatocha.com/images/webkit/image/587-image.jpg" alt="Imagen Principal" id="mainImage"> <!-- Cambia la ruta aquí -->
-        <h1>Contador de Árboles Plantados</h1>
-    </header>
-    <main>
-        <div id="progressContainer">
-            <div id="progressBar"></div>
+        <div class="header-content">
+            <div class="header-image">
+                <img src="https://sleepnatocha.com/images/webkit/image/587-image.jpg" alt="Imagen Principal" id="mainImage">
+            </div>
+            <div class="header-text">
+                <h1><i class="fas fa-tree"></i> Contador de Árboles Plantados</h1>
+                <p class="subtitle">Juntos por un planeta más verde</p>
+            </div>
         </div>
-        <p id="progressText">0 árboles plantados</p>
-        <p>Total donado: $<span id="totalDonated">0.00</span></p>
-        <label for="donationAmount">Cantidad a donar: </label>
-        <input type="number" id="donationAmount" placeholder="Ingrese monto" min="1">
-        <button id="donateButton" onclick="donate(Number(document.getElementById('donationAmount').value))">Donar</button>
+    </header>
+
+    <main class="container">
+        <!-- Sección de meta y objetivo -->
+        <section class="goal-section">
+            <div class="goal-card">
+                <h2>Nuestro Objetivo</h2>
+                <p class="goal-text">Plantar 1000 árboles para mejorar el medio ambiente</p>
+            </div>
+        </section>
+
+        <!-- Sección de progreso mejorada -->
+        <section class="progress-section">
+            <div class="progress-card">
+                <div class="progress-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="progressText">0</span>
+                        <span class="stat-label">Árboles Plantados</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$<span id="totalDonated">0.00</span></span>
+                        <span class="stat-label">Total Donado</span>
+                    </div>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar-background">
+                        <div id="progressBar" class="progress-bar-fill"></div>
+                    </div>
+                    <div class="progress-percentage">
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de donación -->
+        <section class="donation-section">
+            <div class="donation-card">
+                <h2>Realiza tu Donación</h2>
+                <p>Cada dólar plantará un árbol</p>
+                
+                <div class="donation-options">
+                    <button class="preset-btn" onclick="setAmount(10)">$10</button>
+                    <button class="preset-btn" onclick="setAmount(25)">$25</button>
+                    <button class="preset-btn" onclick="setAmount(50)">$50</button>
+                    <button class="preset-btn" onclick="setAmount(100)">$100</button>
+                </div>
+
+                <div class="custom-donation">
+                    <label for="donationAmount">Cantidad personalizada:</label>
+                    <div class="input-group">
+                        <span class="currency">$</span>
+                        <input type="number" id="donationAmount" placeholder="Ingrese monto" min="1" step="0.01">
+                    </div>
+                </div>
+
+                <button id="donateButton" class="donate-button" onclick="donate(Number(document.getElementById('donationAmount').value))">
+                    <i class="fas fa-heart"></i> Donar Ahora
+                </button>
+            </div>
+        </section>
+
+        <!-- Sección de impacto -->
+        <section class="impact-section">
+            <h2>Tu Impacto</h2>
+            <div class="impact-cards">
+                <div class="impact-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Menos Contaminación</h3>
+                    <p>Cada árbol reduce CO₂ de la atmósfera</p>
+                </div>
+                <div class="impact-card">
+                    <i class="fas fa-water"></i>
+                    <h3>Agua Limpia</h3>
+                    <p>Protegen acuíferos y fuentes de agua</p>
+                </div>
+                <div class="impact-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Aire Fresco</h3>
+                    <p>Generan oxígeno para la comunidad</p>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <img src="https://scontent.fmga3-2.fna.fbcdn.net/v/t39.30808-6/426131369_694555619530953_7445981524430163766_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=w-Lrt7nxGLoQ7kNvgFExPiR&_nc_zt=23&_nc_ht=scontent.fmga3-2.fna&_nc_gid=AOH6MKb27SroVbLOxP54Unk&oh=00_AYCvYxyEihAENEcvCtIAznmHa8DuHxSNae7fNBZDg-emAw&oe=67279256" alt="Logo UNAN León" id="logo">
-        <span>Hecho por estudiantes de la UNAN León</span>
+        <div class="footer-content">
+            <img src="https://scontent.fmga3-2.fna.fbcdn.net/v/t39.30808-6/426131369_694555619530953_7445981524430163766_n.jpg" alt="Logo UNAN León" id="logo">
+            <span><i class="fas fa-heart"></i> Hecho por estudiantes de la UNAN León</span>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
