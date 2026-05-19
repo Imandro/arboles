@@ -3,111 +3,402 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contador de Árboles Plantados - UNAN León</title>
+    <title>🌳 Árboles - Reforestación Nicaragua | Dipilto & San José de Cusmapa</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="header-image">
-                <img src="https://sleepnatocha.com/images/webkit/image/587-image.jpg" alt="Imagen Principal" id="mainImage">
+    <!-- HEADER HERO -->
+    <header class="hero-header">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1><i class="fas fa-leaf"></i> ÁRBOLES PARA NICARAGUA</h1>
+                <p class="hero-subtitle">Reforestación comunitaria en Dipilto y San José de Cusmapa</p>
+                <div class="hero-badges">
+                    <span class="badge"><i class="fas fa-map-pin"></i> Nueva Segovia & Madriz</span>
+                    <span class="badge"><i class="fas fa-globe"></i> Honduras-Nicaragua</span>
+                    <span class="badge"><i class="fas fa-tree"></i> 100% Nativo</span>
+                </div>
             </div>
-            <div class="header-text">
-                <h1><i class="fas fa-tree"></i> Contador de Árboles Plantados</h1>
-                <p class="subtitle">Juntos por un planeta más verde</p>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop" alt="Bosque Verde" class="forest-image">
             </div>
         </div>
+        <div class="hero-wave"></div>
     </header>
 
     <main class="container">
-        <!-- Sección de meta y objetivo -->
-        <section class="goal-section">
-            <div class="goal-card">
-                <h2>Nuestro Objetivo</h2>
-                <p class="goal-text">Plantar 1000 árboles para mejorar el medio ambiente</p>
+        <!-- UBICACIONES CLAVE -->
+        <section class="locations-section">
+            <h2 class="section-title">Nuestras Comunidades 🗺️</h2>
+            <div class="locations-grid">
+                <div class="location-card dipilto">
+                    <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Dipilto</h3>
+                    <p class="location-dept">Nueva Segovia, Nicaragua</p>
+                    <div class="location-details">
+                        <p><strong>Región:</strong> Frontera Norte</p>
+                        <p><strong>Necesidad:</strong> Restauración de cobertura forestal</p>
+                        <p><strong>Impacto:</strong> Prevención de erosión del suelo</p>
+                    </div>
+                    <a href="tel:+50582668901" class="contact-link">📞 Contacto Local</a>
+                </div>
+
+                <div class="location-card cusmapa">
+                    <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>San José de Cusmapa</h3>
+                    <p class="location-dept">Madriz, Nicaragua</p>
+                    <div class="location-details">
+                        <p><strong>Región:</strong> Frontera Occidental</p>
+                        <p><strong>Necesidad:</strong> Protección de cuencas hídricas</p>
+                        <p><strong>Impacto:</strong> Ecosistemas y medios de vida</p>
+                    </div>
+                    <a href="tel:+50582668902" class="contact-link">📞 Contacto Local</a>
+                </div>
             </div>
         </section>
 
-        <!-- Sección de progreso mejorada -->
+        <!-- PROGRESO VISUAL -->
         <section class="progress-section">
-            <div class="progress-card">
-                <div class="progress-stats">
-                    <div class="stat">
-                        <span class="stat-number" id="progressText">0</span>
-                        <span class="stat-label">Árboles Plantados</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">$<span id="totalDonated">0.00</span></span>
-                        <span class="stat-label">Total Donado</span>
-                    </div>
+            <div class="progress-container">
+                <div class="progress-header">
+                    <h2>Nuestro Progreso 📊</h2>
+                    <p class="progress-goal">Meta: 1000 árboles plantados en 2026</p>
                 </div>
                 
-                <div class="progress-bar-container">
-                    <div class="progress-bar-background">
+                <div class="progress-stats">
+                    <div class="stat-card trees">
+                        <i class="fas fa-tree"></i>
+                        <div class="stat-content">
+                            <span class="stat-number" id="progressText">0</span>
+                            <span class="stat-label">Árboles Plantados</span>
+                        </div>
+                    </div>
+                    <div class="stat-card money">
+                        <i class="fas fa-heart"></i>
+                        <div class="stat-content">
+                            <span class="stat-number">$<span id="totalDonated">0.00</span></span>
+                            <span class="stat-label">Donado Hasta Hoy</span>
+                        </div>
+                    </div>
+                    <div class="stat-card percentage">
+                        <i class="fas fa-chart-pie"></i>
+                        <div class="stat-content">
+                            <span class="stat-number" id="progressPercent">0%</span>
+                            <span class="stat-label">Meta Alcanzada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-bg">
                         <div id="progressBar" class="progress-bar-fill"></div>
                     </div>
-                    <div class="progress-percentage">
-                        <span id="progressPercent">0%</span>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección de donación -->
+        <!-- SECCIÓN DE DONACIÓN MEJORADA -->
         <section class="donation-section">
-            <div class="donation-card">
-                <h2>Realiza tu Donación</h2>
-                <p>Cada dólar plantará un árbol</p>
-                
-                <div class="donation-options">
-                    <button class="preset-btn" onclick="setAmount(10)">$10</button>
-                    <button class="preset-btn" onclick="setAmount(25)">$25</button>
-                    <button class="preset-btn" onclick="setAmount(50)">$50</button>
-                    <button class="preset-btn" onclick="setAmount(100)">$100</button>
-                </div>
-
-                <div class="custom-donation">
-                    <label for="donationAmount">Cantidad personalizada:</label>
-                    <div class="input-group">
-                        <span class="currency">$</span>
-                        <input type="number" id="donationAmount" placeholder="Ingrese monto" min="1" step="0.01">
+            <div class="donation-container">
+                <div class="donation-info">
+                    <h2>💚 Tu Donación Genera Impacto Real</h2>
+                    <p class="donation-intro">Cada dólar = 1 árbol nativo plantado en Dipilto o San José de Cusmapa</p>
+                    
+                    <div class="donation-breakdown">
+                        <h3>¿A dónde va tu donación?</h3>
+                        <div class="breakdown-items">
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon"><i class="fas fa-leaf"></i></div>
+                                <div class="breakdown-text">
+                                    <strong>45%</strong>
+                                    <p>Compra de árboles nativos y semillas</p>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon"><i class="fas fa-spade"></i></div>
+                                <div class="breakdown-text">
+                                    <strong>25%</strong>
+                                    <p>Preparación de terrenos y herramientas</p>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="breakdown-text">
+                                    <strong>15%</strong>
+                                    <p>Capacitación ambiental comunitaria</p>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon"><i class="fas fa-chart-line"></i></div>
+                                <div class="breakdown-text">
+                                    <strong>10%</strong>
+                                    <p>Administración y transparencia</p>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-icon"><i class="fas fa-microscope"></i></div>
+                                <div class="breakdown-text">
+                                    <strong>5%</strong>
+                                    <p>Monitoreo ambiental y seguimiento</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <button id="donateButton" class="donate-button" onclick="donate(Number(document.getElementById('donationAmount').value))">
-                    <i class="fas fa-heart"></i> Donar Ahora
-                </button>
+                <div class="donation-form">
+                    <h3>Realiza tu Donación 🌱</h3>
+                    <p class="form-subtitle">Selecciona una opción o ingresa tu monto</p>
+                    
+                    <div class="preset-buttons">
+                        <button class="preset-btn" onclick="setAmount(10)" data-amount="10">
+                            <i class="fas fa-tree"></i> $10<br><small>10 árboles</small>
+                        </button>
+                        <button class="preset-btn" onclick="setAmount(25)" data-amount="25">
+                            <i class="fas fa-trees"></i> $25<br><small>25 árboles</small>
+                        </button>
+                        <button class="preset-btn" onclick="setAmount(50)" data-amount="50">
+                            <i class="fas fa-forest"></i> $50<br><small>50 árboles</small>
+                        </button>
+                        <button class="preset-btn" onclick="setAmount(100)" data-amount="100">
+                            <i class="fas fa-landmark"></i> $100<br><small>100 árboles</small>
+                        </button>
+                    </div>
+
+                    <div class="custom-donation">
+                        <label for="donationAmount">💰 Monto Personalizado</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="donationAmount" placeholder="Ingresa tu cantidad" min="1" step="0.01">
+                        </div>
+                    </div>
+
+                    <button id="donateButton" class="donate-button" onclick="donate(Number(document.getElementById('donationAmount').value))">
+                        <i class="fas fa-heart-pulse"></i> DONAR AHORA
+                    </button>
+
+                    <div class="donation-methods">
+                        <p class="methods-title">Métodos de pago disponibles:</p>
+                        <div class="payment-icons">
+                            <span class="method-badge"><i class="fas fa-credit-card"></i> Tarjeta</span>
+                            <span class="method-badge"><i class="fas fa-mobile-alt"></i> PayPal</span>
+                            <span class="method-badge"><i class="fas fa-money-bill"></i> Transferencia</span>
+                            <span class="method-badge"><i class="fas fa-cube"></i> Cripto</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Sección de impacto -->
+        <!-- IMPACTO AMBIENTAL -->
         <section class="impact-section">
-            <h2>Tu Impacto</h2>
-            <div class="impact-cards">
-                <div class="impact-card">
-                    <i class="fas fa-leaf"></i>
-                    <h3>Menos Contaminación</h3>
-                    <p>Cada árbol reduce CO₂ de la atmósfera</p>
+            <h2 class="section-title">Tu Impacto en el Medio Ambiente 🌍</h2>
+            <div class="impact-grid">
+                <div class="impact-card co2">
+                    <div class="impact-icon"><i class="fas fa-cloud"></i></div>
+                    <h3>Reduce CO₂</h3>
+                    <p>Un árbol adulto absorbe 20kg de CO₂ anualmente. ¡Juntos marcamos la diferencia!</p>
+                    <div class="impact-stat">~20kg CO₂/año</div>
                 </div>
-                <div class="impact-card">
-                    <i class="fas fa-water"></i>
+                <div class="impact-card water">
+                    <div class="impact-icon"><i class="fas fa-water"></i></div>
                     <h3>Agua Limpia</h3>
-                    <p>Protegen acuíferos y fuentes de agua</p>
+                    <p>Los árboles protegen acuíferos y cuencas hídricas. Esencial en Madriz y Nueva Segovia.</p>
+                    <div class="impact-stat">+1000L agua/año</div>
                 </div>
-                <div class="impact-card">
-                    <i class="fas fa-wind"></i>
-                    <h3>Aire Fresco</h3>
-                    <p>Generan oxígeno para la comunidad</p>
+                <div class="impact-card oxygen">
+                    <div class="impact-icon"><i class="fas fa-wind"></i></div>
+                    <h3>Oxígeno Puro</h3>
+                    <p>Cada árbol genera oxígeno para 2 personas. ¡Respira aire más limpio hoy!</p>
+                    <div class="impact-stat">120kg O₂/año</div>
                 </div>
+                <div class="impact-card biodiversity">
+                    <div class="impact-icon"><i class="fas fa-frog"></i></div>
+                    <h3>Biodiversidad</h3>
+                    <p>Los bosques nativos albergan cientos de especies. ¡Protégelas con tu aporte!</p>
+                    <div class="impact-stat">+500 especies</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESPECIES NATIVAS -->
+        <section class="species-section">
+            <h2 class="section-title">Árboles Nativos que Plantamos 🌳</h2>
+            <div class="species-grid">
+                <div class="species-card">
+                    <div class="species-icon">🌳</div>
+                    <h4>Guanacaste</h4>
+                    <p class="scientific"><em>Enterolobium cyclocarpum</em></p>
+                    <p class="description">Majestuoso, sombra protectora, alimento para fauna</p>
+                </div>
+                <div class="species-card">
+                    <div class="species-icon">🌲</div>
+                    <h4>Pino</h4>
+                    <p class="scientific"><em>Pinus pseudostrobus</em></p>
+                    <p class="description">Resistente, previene erosión, belleza natural</p>
+                </div>
+                <div class="species-card">
+                    <div class="species-icon">🌴</div>
+                    <h4>Caoba</h4>
+                    <p class="scientific"><em>Swietenia macrophylla</em></p>
+                    <p class="description">Madera valiosa, crece lentamente, protegida</p>
+                </div>
+                <div class="species-card">
+                    <div class="species-icon">🌿</div>
+                    <h4>Laurel</h4>
+                    <p class="scientific"><em>Cordia alliodora</em></p>
+                    <p class="description">Adaptable, maderable, alimento para aves</p>
+                </div>
+                <div class="species-card">
+                    <div class="species-icon">🍃</div>
+                    <h4>Madroño</h4>
+                    <p class="scientific"><em>Calycophyllum candidissimum</em></p>
+                    <p class="description">Florece anualmente, atrae polinizadores</p>
+                </div>
+                <div class="species-card">
+                    <div class="species-icon">🌵</div>
+                    <h4>Chaperno</h4>
+                    <p class="scientific"><em>Lonchocarpus castaneifolius</em></p>
+                    <p class="description">Fijador de nitrógeno, mejora suelos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OBJETIVOS Y METAS -->
+        <section class="goals-section">
+            <h2 class="section-title">Nuestras Metas 🎯</h2>
+            <div class="timeline">
+                <div class="timeline-item goal-2026">
+                    <div class="timeline-marker">2026</div>
+                    <div class="timeline-content">
+                        <h3>Corto Plazo</h3>
+                        <ul>
+                            <li>✅ Plantar 10,000 árboles</li>
+                            <li>✅ Capacitar 500 personas</li>
+                            <li>✅ Establecer 3 viveros comunitarios</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item goal-2027">
+                    <div class="timeline-marker">2027-2028</div>
+                    <div class="timeline-content">
+                        <h3>Mediano Plazo</h3>
+                        <ul>
+                            <li>🌱 Alcanzar 50,000 árboles</li>
+                            <li>🌱 Restaurar 200 hectáreas</li>
+                            <li>🌱 Crear 100 empleos verdes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item goal-2029">
+                    <div class="timeline-marker">2029-2030</div>
+                    <div class="timeline-content">
+                        <h3>Largo Plazo</h3>
+                        <ul>
+                            <li>🌳 100,000 árboles creciendo</li>
+                            <li>🌳 Aumentar cobertura 15%</li>
+                            <li>🌳 Créditos de carbono certificados</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECURSOS Y INFORMACIÓN -->
+        <section class="resources-section">
+            <h2 class="section-title">Recursos e Información 📚</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>Política de Sostenibilidad</h4>
+                    <p>Compromisos ambientales a largo plazo</p>
+                    <a href="#" class="resource-link">Descargar PDF</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h4>Reportes Mensuales</h4>
+                    <p>Transparencia en el uso de fondos</p>
+                    <a href="#" class="resource-link">Ver Reportes</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-microscope"></i>
+                    <h4>Estudios Ambientales</h4>
+                    <p>Investigaciones científicas del proyecto</p>
+                    <a href="#" class="resource-link">Leer Más</a>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h4>Galería de Videos</h4>
+                    <p>Documentales y testimonios comunitarios</p>
+                    <a href="#" class="resource-link">Ver Videos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO Y REDES -->
+        <section class="contact-section">
+            <h2 class="section-title">Contacto y Síguenos 📱</h2>
+            <div class="contact-grid">
+                <div class="contact-card dipilto-contact">
+                    <h3>📍 Dipilto, Nueva Segovia</h3>
+                    <p class="coordinator">Coordinador Local: [Nombre]</p>
+                    <p class="phone">📞 +505 XXXX-XXXX</p>
+                    <p class="email">📧 dipilto@arboles-nicaragua.org</p>
+                </div>
+                <div class="contact-card cusmapa-contact">
+                    <h3>📍 San José de Cusmapa, Madriz</h3>
+                    <p class="coordinator">Coordinador Local: [Nombre]</p>
+                    <p class="phone">📞 +505 XXXX-XXXX</p>
+                    <p class="email">📧 cusmapa@arboles-nicaragua.org</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#" class="social-btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
+            </div>
+        </section>
+
+        <!-- LLAMADA A LA ACCIÓN FINAL -->
+        <section class="cta-final">
+            <div class="cta-content">
+                <h2>¿Listo para ser parte del cambio? 🌿</h2>
+                <p>Cada donación, grande o pequeña, hace la diferencia en Dipilto y San José de Cusmapa</p>
+                <a href="#donateButton" class="cta-button"><i class="fas fa-heart"></i> Dona Ahora</a>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <img src="https://scontent.fmga3-2.fna.fbcdn.net/v/t39.30808-6/426131369_694555619530953_7445981524430163766_n.jpg" alt="Logo UNAN León" id="logo">
-            <span><i class="fas fa-heart"></i> Hecho por estudiantes de la UNAN León</span>
+            <div class="footer-section">
+                <h4>🌳 Árboles</h4>
+                <p>Iniciativa de reforestación comunitaria para un planeta más verde</p>
+            </div>
+            <div class="footer-section">
+                <h4>Ubicaciones</h4>
+                <ul>
+                    <li>Dipilto, Nueva Segovia</li>
+                    <li>San José de Cusmapa, Madriz</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Acerca de</a></li>
+                    <li><a href="#">Donar</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><i class="fas fa-heart"></i> Hecho con amor por la comunidad de Nicaragua</p>
+            <p class="year">© 2026 Proyecto Árboles - Todos los derechos reservados</p>
         </div>
     </footer>
 

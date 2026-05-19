@@ -95,7 +95,7 @@ function setAmount(amount) {
 // Procesar donación
 function donate(amount) {
     if (isNaN(amount) || amount <= 0) {
-        showNotification('Por favor ingresa una cantidad válida', 'error');
+        showNotification('❌ Por favor ingresa una cantidad válida', 'error');
         return;
     }
 
@@ -106,14 +106,14 @@ function donate(amount) {
     // Limpiar el input
     document.getElementById('donationAmount').value = '';
 
-    // Reproducir sonido de éxito (opcional)
+    // Reproducir sonido de éxito
     playSuccessSound();
 
     // Actualizar la interfaz
     updateProgress();
 
     // Mostrar notificación
-    showNotification(`¡Gracias! Donaste $${amount.toFixed(2)} y plantaste ${Math.floor(amount)} árbol(es)`, 'success');
+    showNotification(`✅ ¡Gracias! Donaste $${amount.toFixed(2)} y plantaste ${Math.floor(amount)} árbol(es) en Dipilto y San José de Cusmapa`, 'success');
 }
 
 // Mostrar notificación
@@ -128,18 +128,18 @@ function showNotification(message, type = 'success') {
     document.body.appendChild(notification);
 
     setTimeout(() => {
-        notification.style.animation = 'slideUp 0.5s ease-out reverse';
+        notification.style.animation = 'slideDown 0.5s ease-out reverse';
         setTimeout(() => notification.remove(), 500);
-    }, 3000);
+    }, 4000);
 }
 
 // Celebración al alcanzar objetivo
 function triggerCelebration() {
     // Crear confeti
-    createConfetti(100);
+    createConfetti(150);
 
     // Mostrar mensaje especial
-    showNotification('🎉 ¡¡¡FELICIDADES!!! ¡¡¡Alcanzamos 1000 árboles plantados!!!', 'success');
+    showNotification('🎉 ¡¡¡FELICIDADES!!! ¡Alcanzamos 1000 árboles plantados en Nicaragua! 🎉', 'success');
 
     // Animar barra de progreso
     const progressBar = document.getElementById('progressBar');
@@ -151,7 +151,7 @@ function triggerCelebration() {
 
 // Crear efecto de confeti
 function createConfetti(count) {
-    const colors = ['#2d6a4f', '#40916c', '#52b788', '#74c69d'];
+    const colors = ['#2d6a4f', '#40916c', '#52b788', '#74c69d', '#ff6b6b', '#4ecdc4'];
 
     for (let i = 0; i < count; i++) {
         const confetti = document.createElement('div');
@@ -165,8 +165,9 @@ function createConfetti(count) {
         confetti.style.zIndex = '999';
         confetti.style.pointerEvents = 'none';
         confetti.style.opacity = '1';
+        confetti.style.boxShadow = '0 0 10px rgba(0,0,0,0.3)';
 
-        const duration = 2 + Math.random() * 1;
+        const duration = 2.5 + Math.random() * 1.5;
         const delay = Math.random() * 0.5;
         const rotation = Math.random() * 360;
 
@@ -179,7 +180,7 @@ function createConfetti(count) {
     }
 }
 
-// Reproducir sonido de éxito (usando Web Audio API)
+// Reproducir sonido de éxito
 function playSuccessSound() {
     try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -189,16 +190,16 @@ function playSuccessSound() {
         oscillator.connect(gain);
         gain.connect(audioContext.destination);
 
-        oscillator.frequency.value = 600;
+        oscillator.frequency.value = 800;
         oscillator.type = 'sine';
 
-        gain.gain.setValueAtTime(0.3, audioContext.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
 
         oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.1);
+        oscillator.stop(audioContext.currentTime + 0.15);
     } catch (e) {
-        // Si hay error, ignorar
+        // Ignorar si hay error
     }
 }
 
@@ -206,7 +207,7 @@ function playSuccessSound() {
 function playCelebrationSound() {
     try {
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const notes = [523.25, 659.25, 783.99]; // Do, Mi, Sol
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // Do, Mi, Sol, Do agudo
 
         notes.forEach((freq, index) => {
             setTimeout(() => {
@@ -219,15 +220,15 @@ function playCelebrationSound() {
                 oscillator.frequency.value = freq;
                 oscillator.type = 'sine';
 
-                gain.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
 
                 oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 0.2);
-            }, index * 200);
+                oscillator.stop(audioContext.currentTime + 0.3);
+            }, index * 150);
         });
     } catch (e) {
-        // Si hay error, ignorar
+        // Ignorar si hay error
     }
 }
 
@@ -240,12 +241,12 @@ window.addEventListener('storage', (event) => {
     }
 });
 
-// Event listener para scroll (si lo necesitas)
+// Event listener para scroll mejorado
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
-        header.style.boxShadow = '0 8px 20px rgba(45, 106, 79, 0.3)';
+        header.style.boxShadow = '0 10px 30px rgba(27, 67, 50, 0.3)';
     } else {
-        header.style.boxShadow = '0 4px 12px rgba(45, 106, 79, 0.15)';
+        header.style.boxShadow = '0 4px 15px rgba(27, 67, 50, 0.15)';
     }
 });
