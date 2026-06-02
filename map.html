@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🗺️ Mapa Interactivo - TreeForLife | Monitoreo de Incendios y Despalmes</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-draw/1.0.4/leaflet.draw.min.css" />
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="map-styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="map-header">
+        <div class="header-content">
+            <div class="header-title">
+                <h1><i class="fas fa-map"></i> Monitoreo de Incendios y Despalmes</h1>
+                <p>TreeForLife - Sistema de Vigilancia Ambiental</p>
+            </div>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+        </div>
+    </header>
+
+    <main class="map-container">
+        <!-- LADO IZQUIERDO: INFORMACIÓN Y CONTROLES -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <!-- TAB: INFORMACIÓN -->
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="info">
+                        <i class="fas fa-info-circle"></i> Información
+                    </button>
+                    <button class="tab-btn" data-tab="legend">
+                        <i class="fas fa-list"></i> Leyenda
+                    </button>
+                    <button class="tab-btn" data-tab="events">
+                        <i class="fas fa-bell"></i> Alertas
+                    </button>
+                </div>
+
+                <!-- Tab Content: Información -->
+                <div class="tab-content active" id="tab-info">
+                    <div class="info-section">
+                        <h3><i class="fas fa-fire"></i> Incendios Forestales</h3>
+                        <div class="stat-info">
+                            <p><strong>Total en 2026:</strong> <span id="fire-count">12</span> incendios</p>
+                            <p><strong>Área Afectada:</strong> <span id="fire-area">324.5</span> hectáreas</p>
+                            <p><strong>Estado Actual:</strong> <span class="badge-alert">Controlados</span></p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3><i class="fas fa-tree-alt"></i> Zonas de Despalme</h3>
+                        <div class="stat-info">
+                            <p><strong>Puntos Detectados:</strong> <span id="deforestation-count">18</span></p>
+                            <p><strong>Área Deforestada:</strong> <span id="deforestation-area">156.8</span> hectáreas</p>
+                            <p><strong>Estado:</strong> <span class="badge-warning">En Vigilancia</span></p>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h3><i class="fas fa-check-circle"></i> Áreas Reforestadas</h3>
+                        <div class="stat-info">
+                            <p><strong>Zonas Restauradas:</strong> <span id="reforested-count">8</span></p>
+                            <p><strong>Cobertura Recuperada:</strong> <span id="reforested-area">98.2</span> hectáreas</p>
+                            <p><strong>Tasa Éxito:</strong> <span class="badge-success">92%</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Leyenda -->
+                <div class="tab-content" id="tab-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ff4444;"></div>
+                        <span>Incendios Activos</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ff9944;"></div>
+                        <span>Incendios Controlados</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #dd2c2c;"></div>
+                        <span>Zonas de Despalme Ilegal</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ffaa22;"></div>
+                        <span>Áreas de Alto Riesgo</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #52b788;"></div>
+                        <span>Áreas Reforestadas</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #1b4332;"></div>
+                        <span>Bosques Protegidos</span>
+                    </div>
+
+                    <div class="legend-divider"></div>
+
+                    <h4 style="margin-top: 20px; margin-bottom: 10px;">Controles del Mapa</h4>
+                    <div class="control-info">
+                        <p><strong>🖱️ Click:</strong> Ver detalles</p>
+                        <p><strong>🔍 Zoom:</strong> +/- Acercar/Alejar</p>
+                        <p><strong>🗺️ Capas:</strong> Mostrar/Ocultar datos</p>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Alertas -->
+                <div class="tab-content" id="tab-events">
+                    <div class="alerts-list">
+                        <div class="alert-item alert-critical">
+                            <div class="alert-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h4>Incendio Crítico - Dipilto</h4>
+                                <span class="alert-time">Hace 2 horas</span>
+                            </div>
+                            <p>Incendio forestal en sector norte a 5km de la zona urbana. Área: 45 hectáreas.</p>
+                        </div>
+
+                        <div class="alert-item alert-warning">
+                            <div class="alert-header">
+                                <i class="fas fa-eye"></i>
+                                <h4>Despalme Detectado - Cusmapa</h4>
+                                <span class="alert-time">Hace 6 horas</span>
+                            </div>
+                            <p>Actividad de tala ilegal detectada en zona protegida. Aproximadamente 8 hectáreas.</p>
+                        </div>
+
+                        <div class="alert-item alert-info">
+                            <div class="alert-header">
+                                <i class="fas fa-leaf"></i>
+                                <h4>Reforestación Exitosa</h4>
+                                <span class="alert-time">Hace 1 día</span>
+                            </div>
+                            <p>1,250 árboles plantados exitosamente en zona de recuperación de Dipilto.</p>
+                        </div>
+
+                        <div class="alert-item alert-success">
+                            <div class="alert-header">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Patrullaje Completado</h4>
+                                <span class="alert-time">Hace 3 días</span>
+                            </div>
+                            <p>Patrullaje preventivo realizado. Sin hallazgos de actividad ilegal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtros -->
+                <div class="filters-section">
+                    <h4><i class="fas fa-filter"></i> Filtros</h4>
+                    <div class="filter-group">
+                        <label class="checkbox">
+                            <input type="checkbox" id="filter-fires" checked>
+                            <span>Incendios</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" id="filter-deforestation" checked>
+                            <span>Despalmes</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" id="filter-reforested" checked>
+                            <span>Reforestación</span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" id="filter-protected" checked>
+                            <span>Áreas Protegidas</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- LADO DERECHO: MAPA -->
+        <div class="map-wrapper">
+            <div id="map"></div>
+
+            <!-- Controles flotantes del mapa -->
+            <div class="map-controls">
+                <button id="locate-btn" class="control-btn" title="Mi ubicación">
+                    <i class="fas fa-location-dot"></i>
+                </button>
+                <button id="fullscreen-btn" class="control-btn" title="Pantalla completa">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button id="refresh-btn" class="control-btn" title="Actualizar datos">
+                    <i class="fas fa-sync"></i>
+                </button>
+                <button id="download-btn" class="control-btn" title="Descargar reporte">
+                    <i class="fas fa-download"></i>
+                </button>
+            </div>
+
+            <!-- Panel de detalles del marcador -->
+            <div id="marker-details" class="marker-details">
+                <div class="details-header">
+                    <h3 id="details-title">Detalles del Evento</h3>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="details-body" id="details-body">
+                    <p>Selecciona un marcador en el mapa para ver detalles</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="map-footer">
+        <div class="footer-content">
+            <p><i class="fas fa-leaf"></i> TreeForLife - Sistema de Monitoreo Ambiental</p>
+            <p>Dipilto, Nueva Segovia | San José de Cusmapa, Madriz</p>
+            <p>Datos actualizados: <span id="update-time">2 junio 2026 - 14:30</span></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-draw/1.0.4/leaflet.draw.umd.js"></script>
+    <script src="map-script.js"></script>
+</body>
+</html>
