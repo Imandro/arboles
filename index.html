@@ -1,173 +1,473 @@
-        <!-- ===== ACERCA DE NOSOTROS ===== -->
-        <section class="about-section">
-            <h2 class="section-title">Acerca de TreeForLife 🌍</h2>
-            
-            <div class="about-intro">
-                <p><strong>TreeForLife</strong> es una iniciativa comunitaria de reforestación que une fuerzas para restaurar los bosques de Nicaragua.</p>
-                <p>Trabaja en dos comunidades frontales: <strong>Dipilto (Nueva Segovia)</strong> y <strong>San José de Cusmapa (Madriz)</strong>, enfocándose en la regeneración ambiental, educación comunitaria y empleos verdes sostenibles.</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeForLife - Reforestación Nicaragua</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== SCROLL PROGRESS BAR ===== -->
+    <div id="scrollProgress"></div>
+
+    <!-- ===== HEADER / NAV ===== -->
+    <header id="header">
+        <nav class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-tree"></i>
+                <span>TreeForLife</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#donaciones" class="nav-link">Donar</a></li>
+                <li><a href="#mapas" class="nav-link">Mapas</a></li>
+                <li><a href="#galeria" class="nav-link">Galería</a></li>
+                <li><a href="#tienda" class="nav-link">Tienda</a></li>
+                <li><a href="#acerca" class="nav-link">Nosotros</a></li>
+                <li><a href="#transparencia" class="nav-link">Transparencia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Restaurando los Bosques de Nicaragua</h1>
+            <p class="hero-subtitle">TreeForLife es una iniciativa comunitaria que reforesta <strong>Dipilto</strong> y <strong>San José de Cusmapa</strong>, creando empleos verdes y protegiendo nuestras cuencas hídricas.</p>
+            <div class="hero-cta">
+                <a href="#donaciones" class="btn btn-primary btn-lg">
+                    <i class="fas fa-heart"></i> Donar Ahora
+                </a>
+                <a href="#mapas" class="btn btn-outline btn-lg">
+                    <i class="fas fa-map"></i> Explorar Mapas
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-target="15280">0</span>
+                    <span class="hero-stat-label">Árboles Plantados</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-target="342">0</span>
+                    <span class="hero-stat-label">Hectáreas Restauradas</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-target="45">0</span>
+                    <span class="hero-stat-label">Empleos Verdes</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number" data-target="1280">0</span>
+                    <span class="hero-stat-label">Familias Beneficiadas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DONACIONES ===== -->
+    <section class="section" id="donaciones">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Apoya la Causa</span>
+                <h2 class="section-title">Haz tu Donación</h2>
+                <p class="section-desc">Cada dólar planta árboles nativos, capacita comunidades y restaura ecosistemas en Dipilto y San José de Cusmapa.</p>
+            </div>
+
+            <div class="donation-grid">
+                <div class="donation-main">
+                    <div class="progress-card" data-aos="fade-right" data-aos-delay="100">
+                        <div class="progress-header">
+                            <div>
+                                <h3>Meta: <strong>100,000</strong> árboles</h3>
+                                <p id="progressText" class="progress-count">0 árboles plantados</p>
+                            </div>
+                            <span class="progress-percent" id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar" style="width: 0%;"></div>
+                        </div>
+                        <div class="progress-footer">
+                            <span><i class="fas fa-leaf"></i> <span id="totalDonated">0.00</span> USD donados</span>
+                            <span><i class="fas fa-users"></i> <span id="donorCount">342</span> donantes</span>
+                        </div>
+                    </div>
+
+                    <div class="donation-card" data-aos="fade-right" data-aos-delay="200">
+                        <h3><i class="fas fa-hand-holding-heart"></i> Elige tu aporte</h3>
+                        <div class="quick-amounts">
+                            <button class="amount-btn" data-amount="5">$5</button>
+                            <button class="amount-btn" data-amount="10">$10</button>
+                            <button class="amount-btn" data-amount="25">$25</button>
+                            <button class="amount-btn" data-amount="50">$50</button>
+                            <button class="amount-btn" data-amount="100">$100</button>
+                            <button class="amount-btn custom-amt" data-amount="custom">Otro</button>
+                        </div>
+                        <div class="donation-input-group">
+                            <span class="donation-currency">$</span>
+                            <input type="number" id="donationAmount" class="donation-input" placeholder="0.00" min="1" step="0.01">
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="donate()">
+                            <i class="fas fa-hand-holding-heart"></i> Donar y Plantar Árboles
+                        </button>
+                        <p class="donation-note"><i class="fas fa-shield-alt"></i> 100% transparente. Cada donación se rastrea.</p>
+                    </div>
+                </div>
+
+                <div class="donation-impact" data-aos="fade-left" data-aos-delay="200">
+                    <div class="impact-card">
+                        <i class="fas fa-tree"></i>
+                        <h4>Planta Árboles Nativos</h4>
+                        <p>Guanacaste, Caoba, Pino, Laurel, Madroño</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Educación Ambiental</h4>
+                        <p>Talleres comunitarios en escuelas rurales</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h4>Empleos Verdes</h4>
+                        <p>Contratación local para viveros y plantación</p>
+                    </div>
+                    <div class="impact-card">
+                        <i class="fas fa-water"></i>
+                        <h4>Protege Cuencas</h4>
+                        <p>Recuperación de fuentes de agua</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ACERCA DE ===== -->
+    <section class="section section-alt" id="acerca">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Quiénes Somos</span>
+                <h2 class="section-title">Acerca de TreeForLife</h2>
+                <p class="section-desc">Trabajamos en dos comunidades frontales de Nicaragua restaurando bosques y empoderando familias.</p>
             </div>
 
             <div class="about-grid">
-                <div class="about-card">
+                <div class="about-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="about-icon"><i class="fas fa-leaf"></i></div>
                     <h3>Nuestra Misión</h3>
-                    <p>Restaurar ecosistemas forestales nativos en Nicaragua a través de reforestación comunitaria, educación ambiental y empleos verdes que empoderen a las comunidades locales.</p>
-                    <div class="about-details">
-                        <ul>
-                            <li>Plantar 100,000 árboles nativos</li>
-                            <li>Restaurar 500 hectáreas de bosque</li>
-                            <li>Crear 200+ empleos verdes</li>
-                            <li>Empoderar 1,000+ familias</li>
-                        </ul>
-                    </div>
+                    <p>Restaurar ecosistemas forestales nativos en Nicaragua a través de reforestación comunitaria, educación ambiental y empleos verdes.</p>
+                    <ul class="about-list">
+                        <li>Plantar 100,000 árboles nativos</li>
+                        <li>Restaurar 500 hectáreas de bosque</li>
+                        <li>Crear 200+ empleos verdes</li>
+                        <li>Empoderar 1,000+ familias</li>
+                    </ul>
                 </div>
-
-                <div class="about-card">
+                <div class="about-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="about-icon"><i class="fas fa-globe"></i></div>
                     <h3>Nuestra Visión</h3>
-                    <p>Un futuro donde los bosques de Nueva Segovia y Madriz prosperen, el aire sea limpio, el agua sea abundante y las comunidades vivan en armonía con la naturaleza.</p>
-                    <div class="about-details">
-                        <ul>
-                            <li>Aumento 20% de cobertura forestal</li>
-                            <li>Reducción 15% de erosión de suelos</li>
-                            <li>Protección de cuencas hídricas</li>
-                            <li>Certificación carbono neutral</li>
-                        </ul>
-                    </div>
+                    <p>Un futuro donde los bosques de Nueva Segovia y Madriz prosperen, el aire sea limpio y las comunidades vivan en armonía con la naturaleza.</p>
+                    <ul class="about-list">
+                        <li>Aumento del 20% de cobertura forestal</li>
+                        <li>Reducción del 15% de erosión de suelos</li>
+                        <li>Protección de cuencas hídricas</li>
+                        <li>Certificación carbono neutral</li>
+                    </ul>
                 </div>
-
-                <div class="about-card">
+                <div class="about-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="about-icon"><i class="fas fa-handshake"></i></div>
                     <h3>Nuestros Valores</h3>
-                    <p>Actúamos con transparencia, responsabilidad ambiental y compromiso comunitario en cada acción que realizamos.</p>
-                    <div class="about-details">
-                        <ul>
-                            <li>Transparencia total en fondos</li>
-                            <li>Sostenibilidad a largo plazo</li>
-                            <li>Participación comunitaria activa</li>
-                            <li>Impacto medible y verificable</li>
-                        </ul>
+                    <p>Actuamos con transparencia, responsabilidad ambiental y compromiso comunitario en cada acción.</p>
+                    <ul class="about-list">
+                        <li>Transparencia total en fondos</li>
+                        <li>Sostenibilidad a largo plazo</li>
+                        <li>Participación comunitaria activa</li>
+                        <li>Impacto medible y verificable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="locations-showcase">
+                <div class="location-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="location-icon"><i class="fas fa-mountain"></i></div>
+                    <h4>Dipilto, Nueva Segovia</h4>
+                    <p>Restauración de cobertura forestal y prevención de erosión del suelo en la región norte de Nicaragua.</p>
+                </div>
+                <div class="location-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="location-icon"><i class="fas fa-water"></i></div>
+                    <h4>San José de Cusmapa, Madriz</h4>
+                    <p>Reforestación y protección de cuencas hídricas en la región fronteriza norte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MAPAS ===== -->
+    <section class="section" id="mapas">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Monitoreo en Vivo</span>
+                <h2 class="section-title">Mapas Interactivos</h2>
+                <p class="section-desc">Explora nuestras zonas de operación, monitoreo de incendios, talas y áreas reforestadas.</p>
+            </div>
+
+            <!-- Tabs de ubicaciones -->
+            <div class="map-tabs" data-aos="fade-up" data-aos-delay="100">
+                <button class="map-tab active" data-map="dipilto">
+                    <i class="fas fa-mountain"></i> Dipilto
+                </button>
+                <button class="map-tab" data-map="cusmapa">
+                    <i class="fas fa-water"></i> San José de Cusmapa
+                </button>
+                <button class="map-tab" data-map="reforestacion">
+                    <i class="fas fa-seedling"></i> Zonas Sembradas
+                </button>
+            </div>
+
+            <!-- Controles del mapa -->
+            <div class="map-controls-bar">
+                <div class="map-mode-toggle">
+                    <button class="mode-btn active" data-mode="real">
+                        <i class="fas fa-eye"></i> Ver Real
+                    </button>
+                    <button class="mode-btn" data-mode="simulado">
+                        <i class="fas fa-chart-line"></i> Simulación
+                    </button>
+                </div>
+                <div class="map-filters">
+                    <label class="filter-chip">
+                        <input type="checkbox" id="filterIncendios" checked>
+                        <span>🔥 Incendios</span>
+                    </label>
+                    <label class="filter-chip">
+                        <input type="checkbox" id="filterTalas" checked>
+                        <span>🪚 Talas</span>
+                    </label>
+                    <label class="filter-chip">
+                        <input type="checkbox" id="filterReforestacion" checked>
+                        <span>🌱 Sembradas</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div class="map-wrapper">
+                <div id="mainMap"></div>
+                <div class="map-legend" id="mapLegend">
+                    <div class="legend-title"><i class="fas fa-info-circle"></i> Leyenda</div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#ff4444;"></span> Incendio Activo</div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#ff9944;"></span> Incendio Controlado</div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#dd2c2c;"></span> Tala Ilegal</div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#52b788;"></span> Zona Reforestada</div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#1b4332;"></span> Área Protegida</div>
+                    <div class="legend-row"><span class="legend-dot" style="background:#ffaa22;"></span> Riesgo Potencial</div>
+                </div>
+            </div>
+
+            <!-- Estadísticas del mapa -->
+            <div class="map-stats">
+                <div class="map-stat">
+                    <span class="map-stat-icon">🔥</span>
+                    <span class="map-stat-value" id="fireCount">12</span>
+                    <span class="map-stat-label">Incendios</span>
+                </div>
+                <div class="map-stat">
+                    <span class="map-stat-icon">🪚</span>
+                    <span class="map-stat-value" id="talaCount">18</span>
+                    <span class="map-stat-label">Talas Detectadas</span>
+                </div>
+                <div class="map-stat">
+                    <span class="map-stat-icon">🌱</span>
+                    <span class="map-stat-value" id="siembraCount">8</span>
+                    <span class="map-stat-label">Zonas Reforestadas</span>
+                </div>
+                <div class="map-stat">
+                    <span class="map-stat-icon">📊</span>
+                    <span class="map-stat-value" id="exitoTasa">92%</span>
+                    <span class="map-stat-label">Tasa de Éxito</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALERÍA ===== -->
+    <section class="section section-alt" id="galeria">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Galería</span>
+                <h2 class="section-title">Imágenes de Nuestro Trabajo</h2>
+                <p class="section-desc">Fotografías de las zonas afectadas por incendios, talas ilegales y nuestras áreas de reforestación en Dipilto y San José de Cusmapa.</p>
+            </div>
+
+            <div class="gallery-tabs" data-aos="fade-up">
+                <button class="gallery-tab active" data-gallery="todas">Todas</button>
+                <button class="gallery-tab" data-gallery="dipilto">Dipilto</button>
+                <button class="gallery-tab" data-gallery="cusmapa">San José de Cusmapa</button>
+                <button class="gallery-tab" data-gallery="incendios">Incendios</button>
+                <button class="gallery-tab" data-gallery="talas">Talas</button>
+                <button class="gallery-tab" data-gallery="reforestacion">Reforestación</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid"></div>
+
+            <!-- Lightbox -->
+            <div class="lightbox" id="lightbox">
+                <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+                <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+                <img class="lightbox-img" id="lightboxImg" src="" alt="">
+                <div class="lightbox-caption" id="lightboxCaption"></div>
+                <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TIENDA ===== -->
+    <section class="section" id="tienda">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Tienda Solidaria</span>
+                <h2 class="section-title">TreeForLife Store</h2>
+                <p class="section-desc">Compra artículos oficiales y apoya nuestra misión. Cada producto ayuda a plantar más árboles.</p>
+            </div>
+
+            <div class="store-grid" id="storeGrid">
+                <!-- Products generated by JS -->
+            </div>
+
+            <!-- Carrito -->
+            <div class="cart-overlay" id="cartOverlay"></div>
+            <div class="cart-sidebar" id="cartSidebar">
+                <div class="cart-header">
+                    <h3><i class="fas fa-shopping-cart"></i> Tu Carrito</h3>
+                    <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="cart-items" id="cartItems">
+                    <p class="cart-empty">Tu carrito está vacío</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cartTotal">$0.00</span>
                     </div>
+                    <button class="btn btn-primary btn-block" id="checkoutBtn" onclick="checkout()">
+                        <i class="fas fa-leaf"></i> Comprar y Apoyar
+                    </button>
+                    <p class="cart-note">100% de las ganancias van a reforestación</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ===== EQUIPO ===== -->
-        <section class="team-section">
-            <h2 class="section-title">Nuestro Equipo 👥</h2>
-            
-            <p class="team-intro">Profesionales comprometidos con la conservación ambiental y el desarrollo comunitario sostenible.</p>
+    <!-- ===== EQUIPO ===== -->
+    <section class="section" id="equipo">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Nuestro Equipo</span>
+                <h2 class="section-title">Conoce a la Gente Detrás de TreeForLife</h2>
+                <p class="section-desc">Profesionales comprometidos con la conservación ambiental y el desarrollo comunitario.</p>
+            </div>
 
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-avatar"><i class="fas fa-leaf"></i></div>
+            <div class="team-grid" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-leaf"></i></div>
                     <h4>Dr. Ecólogo Forestal</h4>
-                    <p class="role">Coordinador Técnico General</p>
-                    <p class="university">Ingeniero Forestal - UNA</p>
+                    <p class="team-role">Coordinador Técnico General</p>
+                    <p class="team-edu">Ingeniero Forestal - UNA</p>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-avatar"><i class="fas fa-seedling"></i></div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-seedling"></i></div>
                     <h4>Coordinador Dipilto</h4>
-                    <p class="role">Responsable de Operaciones</p>
-                    <p class="university">Técnico Ambiental - INTA</p>
+                    <p class="team-role">Responsable de Operaciones</p>
+                    <p class="team-edu">Técnico Ambiental - INTA</p>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-avatar"><i class="fas fa-tree"></i></div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-tree"></i></div>
                     <h4>Coordinador Cusmapa</h4>
-                    <p class="role">Gestión Comunitaria</p>
-                    <p class="university">Especialista Desarrollo Rural</p>
+                    <p class="team-role">Gestión Comunitaria</p>
+                    <p class="team-edu">Especialista Desarrollo Rural</p>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-avatar"><i class="fas fa-chart-bar"></i></div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-chart-bar"></i></div>
                     <h4>Especialista Financiero</h4>
-                    <p class="role">Transparencia y Reportes</p>
-                    <p class="university">Contador Público - UNAN</p>
+                    <p class="team-role">Transparencia y Reportes</p>
+                    <p class="team-edu">Contador Público - UNAN</p>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-avatar"><i class="fas fa-users"></i></div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-users"></i></div>
                     <h4>Facilitadora Comunitaria</h4>
-                    <p class="role">Educación y Participación</p>
-                    <p class="university">Promotora Ambiental Certificada</p>
+                    <p class="team-role">Educación y Participación</p>
+                    <p class="team-edu">Promotora Ambiental Certificada</p>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-avatar"><i class="fas fa-monitor"></i></div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fas fa-monitor"></i></div>
                     <h4>Técnico SIG/Monitoreo</h4>
-                    <p class="role">Sistemas de Información Geográfica</p>
-                    <p class="university">Especialista en Teledetección</p>
+                    <p class="team-role">Sistemas de Información Geográfica</p>
+                    <p class="team-edu">Especialista en Teledetección</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ===== TRANSPARENCIA FINANCIERA ===== -->
-        <section class="transparency-section">
-            <h2 class="section-title">Transparencia Financiera 💚</h2>
+    <!-- ===== TRANSPARENCIA ===== -->
+    <section class="section section-alt" id="transparencia">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-badge">Transparencia</span>
+                <h2 class="section-title">Finanzas Transparentes</h2>
+                <p class="section-desc">Cada centavo es rastreado y reportado. Así utilizamos los fondos donados.</p>
+            </div>
 
-            <div class="transparency-container">
-                <!-- Desglose de Fondos -->
+            <div class="transparency-grid">
+                <!-- Desglose -->
                 <div class="transparency-card">
                     <div class="card-icon"><i class="fas fa-pie-chart"></i></div>
-                    <h3>Desglose de Fondos Donados</h3>
-                    <p>Visualiza exactamente cómo se utiliza cada dólar de las donaciones recibidas.</p>
-                    
-                    <div class="fund-breakdown">
+                    <h3>Desglose de Fondos</h3>
+                    <div class="fund-list">
                         <div class="fund-item">
                             <div class="fund-header">
-                                <span class="fund-name"><i class="fas fa-leaf"></i> Plantación de Árboles</span>
-                                <span class="fund-percent">45%</span>
+                                <span><i class="fas fa-leaf"></i> Plantación</span>
+                                <span class="fund-pct">45%</span>
                             </div>
-                            <div class="fund-bar">
-                                <div class="fund-fill" style="width: 45%;"></div>
-                            </div>
-                            <div class="fund-detail">Compra de plántulas nativas y semillas certificadas. Garantiza calidad genética.</div>
+                            <div class="fund-bar"><div class="fund-fill" style="width:45%"></div></div>
                         </div>
-
                         <div class="fund-item">
                             <div class="fund-header">
-                                <span class="fund-name"><i class="fas fa-tools"></i> Preparación Terrenos</span>
-                                <span class="fund-percent">25%</span>
+                                <span><i class="fas fa-tools"></i> Preparación de Terrenos</span>
+                                <span class="fund-pct">25%</span>
                             </div>
-                            <div class="fund-bar">
-                                <div class="fund-fill" style="width: 25%;"></div>
-                            </div>
-                            <div class="fund-detail">Herramientas, mano de obra, maquinaria para preparación y mantenimiento del terreno.</div>
+                            <div class="fund-bar"><div class="fund-fill" style="width:25%"></div></div>
                         </div>
-
                         <div class="fund-item">
                             <div class="fund-header">
-                                <span class="fund-name"><i class="fas fa-graduation-cap"></i> Capacitación Ambiental</span>
-                                <span class="fund-percent">15%</span>
+                                <span><i class="fas fa-graduation-cap"></i> Capacitación</span>
+                                <span class="fund-pct">15%</span>
                             </div>
-                            <div class="fund-bar">
-                                <div class="fund-fill" style="width: 15%;"></div>
-                            </div>
-                            <div class="fund-detail">Talleres, materiales educativos y formación ambiental continua de comunidades.</div>
+                            <div class="fund-bar"><div class="fund-fill" style="width:15%"></div></div>
                         </div>
-
                         <div class="fund-item">
                             <div class="fund-header">
-                                <span class="fund-name"><i class="fas fa-cogs"></i> Administración</span>
-                                <span class="fund-percent">10%</span>
+                                <span><i class="fas fa-cogs"></i> Administración</span>
+                                <span class="fund-pct">10%</span>
                             </div>
-                            <div class="fund-bar">
-                                <div class="fund-fill" style="width: 10%;"></div>
-                            </div>
-                            <div class="fund-detail">Gestión, auditoría, reportes y transparencia del proyecto.</div>
+                            <div class="fund-bar"><div class="fund-fill" style="width:10%"></div></div>
                         </div>
-
                         <div class="fund-item">
                             <div class="fund-header">
-                                <span class="fund-name"><i class="fas fa-satellite"></i> Monitoreo</span>
-                                <span class="fund-percent">5%</span>
+                                <span><i class="fas fa-satellite"></i> Monitoreo</span>
+                                <span class="fund-pct">5%</span>
                             </div>
-                            <div class="fund-bar">
-                                <div class="fund-fill" style="width: 5%;"></div>
-                            </div>
-                            <div class="fund-detail">Seguimiento ambiental, satelital y verificación de supervivencia de árboles.</div>
+                            <div class="fund-bar"><div class="fund-fill" style="width:5%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -175,134 +475,137 @@
                 <!-- Estado Legal -->
                 <div class="transparency-card">
                     <div class="card-icon"><i class="fas fa-certificate"></i></div>
-                    <h3>Estado Legal y Certificaciones</h3>
-                    <p>TreeForLife opera bajo marcos legales rigurosos y auditorías externas.</p>
-                    
-                    <div class="legal-info">
-                        <div class="legal-item">
-                            <i class="fas fa-scroll"></i>
-                            <h4>Registrado MARENA</h4>
-                            <p>Aprobado por Ministerio de Ambiente</p>
-                        </div>
-                        <div class="legal-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <h4>ONG Registrada</h4>
-                            <p>Estatuto legal vigente Nicaragua</p>
-                        </div>
-                        <div class="legal-item">
-                            <i class="fas fa-check-circle"></i>
-                            <h4>Auditoría Anual</h4>
-                            <p>Firma contable independiente</p>
-                        </div>
-                        <div class="legal-item">
-                            <i class="fas fa-leaf"></i>
-                            <h4>Carbono Certificado</h4>
-                            <p>Créditos verificados internacionalmente</p>
-                        </div>
-                        <div class="legal-item">
-                            <i class="fas fa-globe"></i>
-                            <h4>ISO 14001</h4>
-                            <p>Gestión ambiental certificada</p>
-                        </div>
-                        <div class="legal-item">
-                            <i class="fas fa-balance-scale"></i>
-                            <h4>Transparencia ONG</h4>
-                            <p>Verificado por plataforma internacional</p>
-                        </div>
+                    <h3>Certificaciones</h3>
+                    <div class="legal-grid">
+                        <div class="legal-item"><i class="fas fa-scroll"></i><h4>Registrado MARENA</h4><p>Ministerio de Ambiente</p></div>
+                        <div class="legal-item"><i class="fas fa-shield-alt"></i><h4>ONG Registrada</h4><p>Estatuto legal vigente</p></div>
+                        <div class="legal-item"><i class="fas fa-check-circle"></i><h4>Auditoría Anual</h4><p>Firma contable independiente</p></div>
+                        <div class="legal-item"><i class="fas fa-leaf"></i><h4>Carbono Certificado</h4><p>Créditos verificados</p></div>
+                        <div class="legal-item"><i class="fas fa-globe"></i><h4>ISO 14001</h4><p>Gestión ambiental</p></div>
+                        <div class="legal-item"><i class="fas fa-balance-scale"></i><h4>Transparencia ONG</h4><p>Verificado internacional</p></div>
                     </div>
-
-                    <p style="margin-top: 20px; font-size: 0.9em; color: var(--light-green);">
-                        <i class="fas fa-info-circle"></i> Toda documentación disponible para verificación pública.
-                    </p>
                 </div>
 
-                <!-- Fondos Disponibles -->
+                <!-- Estado de Fondos -->
                 <div class="transparency-card">
                     <div class="card-icon"><i class="fas fa-wallet"></i></div>
                     <h3>Estado de Fondos 2026</h3>
-                    <p>Resumen del dinero recibido, utilizado y proyectado.</p>
-                    
-                    <div style="margin-top: 30px;">
-                        <div class="fund-item">
-                            <div class="fund-header">
-                                <span class="fund-name">💚 Total Recaudado</span>
-                            </div>
-                            <div class="usage-amount" style="font-size: 1.3em; padding: 20px;">$45,830.00</div>
+                    <div class="funds-state">
+                        <div class="state-item">
+                            <span class="state-label">Recaudado</span>
+                            <span class="state-value">$45,830.00</span>
                         </div>
-
-                        <div class="fund-item" style="margin-top: 15px;">
-                            <div class="fund-header">
-                                <span class="fund-name">✅ Total Utilizado</span>
-                            </div>
-                            <div class="usage-amount" style="font-size: 1.3em; padding: 20px; background: #c8e6c9;">$38,200.00</div>
+                        <div class="state-item">
+                            <span class="state-label">Utilizado</span>
+                            <span class="state-value used">$38,200.00</span>
                         </div>
-
-                        <div class="fund-item" style="margin-top: 15px;">
-                            <div class="fund-header">
-                                <span class="fund-name">🏦 Saldo Disponible</span>
-                            </div>
-                            <div class="usage-amount" style="font-size: 1.3em; padding: 20px; background: #a5d6a7;">$7,630.00</div>
+                        <div class="state-item">
+                            <span class="state-label">Disponible</span>
+                            <span class="state-value available">$7,630.00</span>
                         </div>
-
-                        <p style="margin-top: 20px; font-size: 0.9em; color: var(--light-green); text-align: center;">
-                            <i class="fas fa-calendar"></i> Datos al 2 junio 2026
-                        </p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- ===== USO DE FONDOS POR FASE ===== -->
-        <section class="fund-usage-section">
-            <h2 class="section-title">Cronograma de Inversión 📊</h2>
-
-            <div class="fund-usage-timeline">
-                <div class="usage-card">
-                    <span class="usage-phase">Fase 1: Inicio (2026 Q1-Q2)</span>
-                    <h4>Infraestructura Base</h4>
-                    <ul>
-                        <li>Establecimiento de viveros (3 locales)</li>
-                        <li>Capacitación del equipo técnico</li>
-                        <li>Adecuación de oficinas y almacenes</li>
-                        <li>Compra de herramientas iniciales</li>
-                    </ul>
-                    <div class="usage-amount">$8,500 invertidos</div>
-                </div>
-
-                <div class="usage-card">
-                    <span class="usage-phase">Fase 2: Plantación (2026 Q2-Q3)</span>
-                    <h4>Reforestación Principal</h4>
-                    <ul>
-                        <li>Compra de 15,000 plántulas nativas</li>
-                        <li>Preparación de 45 hectáreas</li>
-                        <li>Plantación comunitaria masiva</li>
-                        <li>Sistemas de riego inicial</li>
-                    </ul>
-                    <div class="usage-amount">$18,750 invertidos</div>
-                </div>
-
-                <div class="usage-card">
-                    <span class="usage-phase">Fase 3: Sostenimiento (2026 Q3-Q4)</span>
-                    <h4>Mantenimiento y Educación</h4>
-                    <ul>
-                        <li>Riego y mantenimiento de plantaciones</li>
-                        <li>12 talleres de capacitación comunitaria</li>
-                        <li>Sistema de monitoreo SIG</li>
-                        <li>Primera auditoría externa</li>
-                    </ul>
-                    <div class="usage-amount">$10,950 proyectados</div>
-                </div>
-
-                <div class="usage-card">
-                    <span class="usage-phase">Fase 4: Expansión (2027)</span>
-                    <h4>Escalamiento del Proyecto</h4>
-                    <ul>
-                        <li>Aumento a 50,000 árboles/año</li>
-                        <li>Creación de 100+ empleos verdes</li>
-                        <li>Certificación de créditos de carbono</li>
-                        <li>Replicación en otras regiones</li>
-                    </ul>
-                    <div class="usage-amount">$25,000+ proyectados</div>
+            <!-- Cronograma -->
+            <div class="timeline">
+                <h3 class="timeline-title"><i class="fas fa-clock"></i> Cronograma de Inversión</h3>
+                <div class="timeline-grid">
+                    <div class="timeline-card">
+                        <span class="timeline-phase">Fase 1: Inicio (2026 Q1-Q2)</span>
+                        <h4>Infraestructura Base</h4>
+                        <ul>
+                            <li>Establecimiento de viveros (3 locales)</li>
+                            <li>Capacitación del equipo técnico</li>
+                            <li>Adecuación de oficinas y almacenes</li>
+                        </ul>
+                        <div class="timeline-amount">$8,500 invertidos</div>
+                    </div>
+                    <div class="timeline-card">
+                        <span class="timeline-phase">Fase 2: Plantación (2026 Q2-Q3)</span>
+                        <h4>Reforestación Principal</h4>
+                        <ul>
+                            <li>Compra de 15,000 plántulas nativas</li>
+                            <li>Preparación de 45 hectáreas</li>
+                            <li>Plantación comunitaria masiva</li>
+                        </ul>
+                        <div class="timeline-amount">$18,750 invertidos</div>
+                    </div>
+                    <div class="timeline-card">
+                        <span class="timeline-phase">Fase 3: Sostenimiento (2026 Q3-Q4)</span>
+                        <h4>Mantenimiento y Educación</h4>
+                        <ul>
+                            <li>Riego y mantenimiento</li>
+                            <li>12 talleres de capacitación</li>
+                            <li>Sistema de monitoreo SIG</li>
+                        </ul>
+                        <div class="timeline-amount">$10,950 proyectados</div>
+                    </div>
+                    <div class="timeline-card">
+                        <span class="timeline-phase">Fase 4: Expansión (2027)</span>
+                        <h4>Escalamiento del Proyecto</h4>
+                        <ul>
+                            <li>Aumento a 50,000 árboles/año</li>
+                            <li>Creación de 100+ empleos verdes</li>
+                            <li>Certificación de créditos de carbono</li>
+                        </ul>
+                        <div class="timeline-amount">$25,000+ proyectados</div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-tree"></i> TreeForLife</h3>
+                    <p>Reforestando Nicaragua, un árbol a la vez. Trabajamos en Dipilto y San José de Cusmapa para restaurar nuestros bosques nativos.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <a href="#donaciones">Donar</a>
+                    <a href="#mapas">Mapas</a>
+                    <a href="#tienda">Tienda</a>
+                    <a href="#transparencia">Transparencia</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contacto</h4>
+                    <a href="mailto:contacto@treeforlife.org"><i class="fas fa-envelope"></i> contacto@treeforlife.org</a>
+                    <a href="#"><i class="fas fa-phone"></i> +505 XXXX-XXXX</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Dipilto, Nueva Segovia</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> San José de Cusmapa, Madriz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TreeForLife. Todos los derechos reservados.</p>
+                <p>Hecho con <i class="fas fa-heart" style="color:#ff4444;"></i> para Nicaragua</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notificaciones -->
+    <div id="notificationContainer"></div>
+
+    <!-- Botón carrito flotante -->
+    <button class="cart-fab" id="cartFab" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

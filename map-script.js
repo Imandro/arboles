@@ -1,3 +1,8 @@
+// Inicializar AOS
+if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true });
+}
+
 // Coordenadas de Dipilto y San José de Cusmapa
 const DIPILTO = { lat: 14.4419, lng: -86.3639 };
 const CUSMAPA = { lat: 14.3944, lng: -86.5269 };
