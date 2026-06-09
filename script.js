@@ -30,12 +30,12 @@ const DATA = {
         { id: 15, name: 'Amenaza - Corredor Biológico', lat: 13.50, lng: -86.58, area: 18.0, status: 'Simulado', severity: 'medio', date: 'Simulación', trees: 350, desc: 'Corredor biológico en riesgo por presión humana.' }
     ],
     siembras: [
-        { id: 20, name: 'Plantación Exitosa - Dipilto Sur', lat: 13.69, lng: -86.50, area: 18.0, trees: 1250, species: 'Guanacaste, Pino, Laurel', rate: 92, date: 'May 2026' },
-        { id: 21, name: 'Bosque Restaurado - Cusmapa Centro', lat: 13.29, lng: -86.65, area: 22.5, trees: 1580, species: 'Caoba, Madroño, Chaperno', rate: 88, date: 'May 2026' },
-        { id: 22, name: 'Vivero Comunitario - Dipilto', lat: 13.72, lng: -86.50, area: 2.0, trees: 8500, species: 'Múltiples nativas', rate: 95, date: 'Ene 2026' },
-        { id: 23, name: 'Restauración Cuenca - Cusmapa', lat: 13.27, lng: -86.66, area: 35.0, trees: 2100, species: 'Especies ribereñas', rate: 85, date: 'Feb 2026' },
-        { id: 24, name: 'Reforestación Norte - Dipilto', lat: 13.74, lng: -86.49, area: 12.0, trees: 900, species: 'Pino, Roble', rate: 90, date: 'Abr 2026' },
-        { id: 25, name: 'Siembra Comunitaria - Cusmapa', lat: 13.28, lng: -86.64, area: 8.5, trees: 650, species: 'Madroño, Laurel', rate: 87, date: 'Mar 2026' }
+        { id: 20, name: 'Plantación Exitosa - Dipilto Sur', lat: 13.69, lng: -86.50, area: 18.0, trees: 1250, species: 'Guanacaste, Pino, Laurel', rate: 78, date: 'May 2026' },
+        { id: 21, name: 'Bosque Restaurado - Cusmapa Centro', lat: 13.29, lng: -86.65, area: 22.5, trees: 1580, species: 'Caoba, Madroño, Chaperno', rate: 72, date: 'May 2026' },
+        { id: 22, name: 'Vivero Comunitario - Dipilto', lat: 13.72, lng: -86.50, area: 2.0, trees: 8500, species: 'Múltiples nativas', rate: 85, date: 'Ene 2026' },
+        { id: 23, name: 'Restauración Cuenca - Cusmapa', lat: 13.27, lng: -86.66, area: 35.0, trees: 2100, species: 'Especies ribereñas', rate: 70, date: 'Feb 2026' },
+        { id: 24, name: 'Reforestación Norte - Dipilto', lat: 13.74, lng: -86.49, area: 12.0, trees: 900, species: 'Pino, Roble', rate: 76, date: 'Abr 2026' },
+        { id: 25, name: 'Siembra Comunitaria - Cusmapa', lat: 13.28, lng: -86.64, area: 8.5, trees: 650, species: 'Madroño, Laurel', rate: 74, date: 'Mar 2026' }
     ],
     protegidas: [
         { id: 30, name: 'Reserva Forestal Dipilto', lat: 13.72, lng: -86.49, area: 156, level: 'Alto' },
@@ -56,7 +56,7 @@ const PRODUCTS = [
 // ===== STATE =====
 let totalDonated = parseFloat(localStorage.getItem('totalDonated')) || 0;
 let treesPlanted = Math.floor(totalDonated);
-const GOAL = 100000;
+const GOAL = 10000;
 let celebrationTriggered = false;
 let currentMapMode = 'real';
 let currentMapView = 'dipilto';
@@ -470,7 +470,8 @@ function updateMapStats() {
     document.getElementById('fireCount').textContent = DATA.fires.filter(f => f.status !== 'Simulado').length;
     document.getElementById('talaCount').textContent = DATA.talas.filter(t => t.status !== 'Simulado').length;
     document.getElementById('siembraCount').textContent = DATA.siembras.length;
-    document.getElementById('exitoTasa').textContent = '92%';
+    const avgRate = Math.round(DATA.siembras.reduce((s, r) => s + r.rate, 0) / DATA.siembras.length);
+    document.getElementById('exitoTasa').textContent = avgRate + '%';
 }
 
 function initMapControls() {
