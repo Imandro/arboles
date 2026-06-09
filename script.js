@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCart();
     initAOS();
     initGSAPAnimations();
+    initThemeToggle();
 });
 
 function initAOS() {
@@ -89,6 +90,22 @@ function initAOS() {
             offset: 60
         });
     }
+}
+
+function initThemeToggle() {
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const icon = toggle.querySelector('i');
+    const saved = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', saved);
+    icon.className = saved === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    toggle.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    });
 }
 
 function initGSAPAnimations() {
