@@ -4,12 +4,12 @@ if (typeof AOS !== 'undefined') {
 }
 
 // Coordenadas de Dipilto y San José de Cusmapa
-const DIPILTO = { lat: 14.4419, lng: -86.3639 };
-const CUSMAPA = { lat: 14.3944, lng: -86.5269 };
-const CENTER = { lat: 14.417, lng: -86.445 };
+const DIPILTO = { lat: 13.7167, lng: -86.5000 };
+const CUSMAPA = { lat: 13.2880, lng: -86.6544 };
+const CENTER = { lat: 13.502, lng: -86.577 };
 
 // Inicializar el mapa
-const map = L.map('map').setView([CENTER.lat, CENTER.lng], 11);
+const map = L.map('map').setView([CENTER.lat, CENTER.lng], 10);
 
 // Agregar capa de OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -40,8 +40,8 @@ const events = {
         {
             id: 1,
             name: 'Incendio Sector Norte - Dipilto',
-            lat: 14.5,
-            lng: -86.35,
+            lat: 13.75,
+            lng: -86.48,
             area: 45.2,
             status: 'Controlado',
             date: '2 junio 2026',
@@ -54,8 +54,8 @@ const events = {
         {
             id: 2,
             name: 'Incendio Sector Oeste - Cusmapa',
-            lat: 14.35,
-            lng: -86.60,
+            lat: 13.27,
+            lng: -86.68,
             area: 32.8,
             status: 'Controlado',
             date: '1 junio 2026',
@@ -68,8 +68,8 @@ const events = {
         {
             id: 3,
             name: 'Incendio Sector Sur - Dipilto',
-            lat: 14.38,
-            lng: -86.30,
+            lat: 13.68,
+            lng: -86.51,
             area: 18.5,
             status: 'Vigilancia',
             date: '31 mayo 2026',
@@ -82,8 +82,8 @@ const events = {
         {
             id: 4,
             name: 'Incendio Zona Centro - Cusmapa',
-            lat: 14.42,
-            lng: -86.55,
+            lat: 13.29,
+            lng: -86.65,
             area: 28.0,
             status: 'Controlado',
             date: '30 mayo 2026',
@@ -98,8 +98,8 @@ const events = {
         {
             id: 10,
             name: 'Despalme Ilegal - Zona Protegida',
-            lat: 14.48,
-            lng: -86.38,
+            lat: 13.73,
+            lng: -86.49,
             area: 12.5,
             status: 'Investigación',
             date: '2 junio 2026',
@@ -112,8 +112,8 @@ const events = {
         {
             id: 11,
             name: 'Despalme Detectado - Dipilto',
-            lat: 14.42,
-            lng: -86.32,
+            lat: 13.71,
+            lng: -86.52,
             area: 8.3,
             status: 'Vigilancia',
             date: '1 junio 2026',
@@ -126,22 +126,22 @@ const events = {
         {
             id: 12,
             name: 'Despalme Fronterizo - Cusmapa',
-            lat: 14.35,
-            lng: -86.58,
+            lat: 13.28,
+            lng: -86.67,
             area: 15.2,
             status: 'Investigación',
             date: '30 mayo 2026',
             time: '08:45',
             severity: 'alto',
-            description: 'Zona fronteriza. Se investiga origen del despalme. Colaboración con Honduras.',
+            description: 'Zona fronteriza. Se investiga origen del despalme.',
             trees: 520,
-            authorities: 'MARENA, Aduanas, Honduras'
+            authorities: 'MARENA'
         },
         {
             id: 13,
             name: 'Extracción Selectiva - Dipilto',
-            lat: 14.46,
-            lng: -86.34,
+            lat: 13.72,
+            lng: -86.48,
             area: 5.8,
             status: 'Legal',
             date: '28 mayo 2026',
@@ -156,8 +156,8 @@ const events = {
         {
             id: 20,
             name: 'Plantación Exitosa - Dipilto Sur',
-            lat: 14.39,
-            lng: -86.36,
+            lat: 13.69,
+            lng: -86.50,
             area: 18.0,
             status: 'Exitoso',
             date: '15 mayo 2026',
@@ -169,8 +169,8 @@ const events = {
         {
             id: 21,
             name: 'Bosque Restaurado - Cusmapa Centro',
-            lat: 14.40,
-            lng: -86.54,
+            lat: 13.29,
+            lng: -86.65,
             area: 22.5,
             status: 'Exitoso',
             date: '1 mayo 2026',
@@ -182,8 +182,8 @@ const events = {
         {
             id: 22,
             name: 'Vivero Comunitario - Dipilto',
-            lat: 14.44,
-            lng: -86.36,
+            lat: 13.72,
+            lng: -86.50,
             area: 2.0,
             status: 'Activo',
             date: '1 enero 2026',
@@ -195,8 +195,8 @@ const events = {
         {
             id: 23,
             name: 'Restauración Cuenca Hídrica - Cusmapa',
-            lat: 14.36,
-            lng: -86.52,
+            lat: 13.27,
+            lng: -86.66,
             area: 35.0,
             status: 'Progreso',
             date: '1 febrero 2026',
@@ -210,8 +210,8 @@ const events = {
         {
             id: 30,
             name: 'Reserva Forestal - Dipilto',
-            lat: 14.42,
-            lng: -86.32,
+            lat: 13.72,
+            lng: -86.49,
             area: 156.0,
             status: 'Protegida',
             description: 'Zona bajo protección legal. Monitoreo continuo por MARENA.',
@@ -220,8 +220,8 @@ const events = {
         {
             id: 31,
             name: 'Bosque Nuboso - Cusmapa',
-            lat: 14.38,
-            lng: -86.56,
+            lat: 13.29,
+            lng: -86.66,
             area: 248.0,
             status: 'Protegida',
             description: 'Ecosistema crítico. Biodiversidad única de Centroamérica.',

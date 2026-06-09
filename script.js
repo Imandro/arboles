@@ -4,42 +4,42 @@
 
 // ===== COORDINATES =====
 const LOCATIONS = {
-    dipilto: { center: [14.4419, -86.3639], zoom: 12, name: 'Dipilto' },
-    cusmapa: { center: [14.3944, -86.5269], zoom: 12, name: 'San José de Cusmapa' },
-    reforestacion: { center: [14.417, -86.445], zoom: 11, name: 'Zonas Sembradas' }
+    dipilto: { center: [13.7167, -86.5000], zoom: 13, name: 'Dipilto' },
+    cusmapa: { center: [13.2880, -86.6544], zoom: 13, name: 'San José de Cusmapa' },
+    reforestacion: { center: [13.502, -86.577], zoom: 11, name: 'Zonas Sembradas' }
 };
 
 // ===== DATA =====
 const DATA = {
     fires: [
-        { id: 1, name: 'Incendio Sector Norte - Dipilto', lat: 14.50, lng: -86.35, area: 45.2, status: 'Controlado', severity: 'alto', date: '2 Jun 2026', desc: 'Incendio forestal en bosque de pino. 45.2 ha afectadas.' },
-        { id: 2, name: 'Incendio Sector Oeste - Cusmapa', lat: 14.35, lng: -86.60, area: 32.8, status: 'Controlado', severity: 'medio', date: '1 Jun 2026', desc: 'Incendio en zona mixta de bosque tropical.' },
-        { id: 3, name: 'Incendio Sector Sur - Dipilto', lat: 14.38, lng: -86.30, area: 18.5, status: 'Vigilancia', severity: 'bajo', date: '31 May 2026', desc: 'Pequeño incendio controlado. Vigilancia activa.' },
-        { id: 4, name: 'Incendio Zona Centro - Cusmapa', lat: 14.42, lng: -86.55, area: 28.0, status: 'Controlado', severity: 'medio', date: '30 May 2026', desc: 'Incendio controlado exitosamente.' },
+        { id: 1, name: 'Incendio Sector Norte - Dipilto', lat: 13.75, lng: -86.48, area: 45.2, status: 'Controlado', severity: 'alto', date: '2 Jun 2026', desc: 'Incendio forestal en bosque de pino. 45.2 ha afectadas.' },
+        { id: 2, name: 'Incendio Sector Oeste - Cusmapa', lat: 13.27, lng: -86.68, area: 32.8, status: 'Controlado', severity: 'medio', date: '1 Jun 2026', desc: 'Incendio en zona mixta de bosque tropical.' },
+        { id: 3, name: 'Incendio Sector Sur - Dipilto', lat: 13.68, lng: -86.51, area: 18.5, status: 'Vigilancia', severity: 'bajo', date: '31 May 2026', desc: 'Pequeño incendio controlado. Vigilancia activa.' },
+        { id: 4, name: 'Incendio Zona Centro - Cusmapa', lat: 13.29, lng: -86.65, area: 28.0, status: 'Controlado', severity: 'medio', date: '30 May 2026', desc: 'Incendio controlado exitosamente.' },
         // Simulated risk fires
-        { id: 5, name: 'Riesgo Alto - Zona Este Dipilto', lat: 14.47, lng: -86.32, area: 55.0, status: 'Simulado', severity: 'critico', date: 'Simulación', desc: 'Zona de alto riesgo. Vegetación seca acumulada.' },
-        { id: 6, name: 'Riesgo Potencial - Cusmapa Sur', lat: 14.36, lng: -86.54, area: 40.0, status: 'Simulado', severity: 'alto', date: 'Simulación', desc: 'Predicción de riesgo por temporada seca prolongada.' }
+        { id: 5, name: 'Riesgo Alto - Zona Este Dipilto', lat: 13.73, lng: -86.45, area: 55.0, status: 'Simulado', severity: 'critico', date: 'Simulación', desc: 'Zona de alto riesgo. Vegetación seca acumulada.' },
+        { id: 6, name: 'Riesgo Potencial - Cusmapa Sur', lat: 13.26, lng: -86.64, area: 40.0, status: 'Simulado', severity: 'alto', date: 'Simulación', desc: 'Predicción de riesgo por temporada seca prolongada.' }
     ],
     talas: [
-        { id: 10, name: 'Tala Ilegal - Zona Protegida', lat: 14.48, lng: -86.38, area: 12.5, status: 'Investigación', severity: 'critico', date: '2 Jun 2026', trees: 450, desc: 'Tala ilegal en zona protegida. Investigación activa.' },
-        { id: 11, name: 'Tala Detectada - Dipilto', lat: 14.42, lng: -86.32, area: 8.3, status: 'Vigilancia', severity: 'alto', date: '1 Jun 2026', trees: 290, desc: 'Actividad de tala detectada. Monitoreo continuo.' },
-        { id: 12, name: 'Tala Fronteriza - Cusmapa', lat: 14.35, lng: -86.58, area: 15.2, status: 'Investigación', severity: 'alto', date: '30 May 2026', trees: 520, desc: 'Zona fronteriza. Colaboración con autoridades.' },
-        { id: 13, name: 'Extracción Selectiva - Dipilto', lat: 14.46, lng: -86.34, area: 5.8, status: 'Legal', severity: 'bajo', date: '28 May 2026', trees: 180, desc: 'Extracción autorizada por MARENA.' },
+        { id: 10, name: 'Tala Ilegal - Zona Protegida', lat: 13.73, lng: -86.49, area: 12.5, status: 'Investigación', severity: 'critico', date: '2 Jun 2026', trees: 450, desc: 'Tala ilegal en zona protegida. Investigación activa.' },
+        { id: 11, name: 'Tala Detectada - Dipilto', lat: 13.71, lng: -86.52, area: 8.3, status: 'Vigilancia', severity: 'alto', date: '1 Jun 2026', trees: 290, desc: 'Actividad de tala detectada. Monitoreo continuo.' },
+        { id: 12, name: 'Tala Fronteriza - Cusmapa', lat: 13.28, lng: -86.67, area: 15.2, status: 'Investigación', severity: 'alto', date: '30 May 2026', trees: 520, desc: 'Zona fronteriza. Colaboración con autoridades.' },
+        { id: 13, name: 'Extracción Selectiva - Dipilto', lat: 13.72, lng: -86.48, area: 5.8, status: 'Legal', severity: 'bajo', date: '28 May 2026', trees: 180, desc: 'Extracción autorizada por MARENA.' },
         // Simulated
-        { id: 14, name: 'Riesgo Tala - Bosque Nuboso', lat: 14.40, lng: -86.56, area: 22.0, status: 'Simulado', severity: 'critico', date: 'Simulación', trees: 800, desc: 'Zona vulnerable a tala ilegal por accesibilidad.' },
-        { id: 15, name: 'Amenaza - Corredor Biológico', lat: 14.44, lng: -86.42, area: 18.0, status: 'Simulado', severity: 'medio', date: 'Simulación', trees: 350, desc: 'Corredor biológico en riesgo por presión humana.' }
+        { id: 14, name: 'Riesgo Tala - Bosque Nuboso', lat: 13.30, lng: -86.66, area: 22.0, status: 'Simulado', severity: 'critico', date: 'Simulación', trees: 800, desc: 'Zona vulnerable a tala ilegal por accesibilidad.' },
+        { id: 15, name: 'Amenaza - Corredor Biológico', lat: 13.50, lng: -86.58, area: 18.0, status: 'Simulado', severity: 'medio', date: 'Simulación', trees: 350, desc: 'Corredor biológico en riesgo por presión humana.' }
     ],
     siembras: [
-        { id: 20, name: 'Plantación Exitosa - Dipilto Sur', lat: 14.39, lng: -86.36, area: 18.0, trees: 1250, species: 'Guanacaste, Pino, Laurel', rate: 92, date: 'May 2026' },
-        { id: 21, name: 'Bosque Restaurado - Cusmapa Centro', lat: 14.40, lng: -86.54, area: 22.5, trees: 1580, species: 'Caoba, Madroño, Chaperno', rate: 88, date: 'May 2026' },
-        { id: 22, name: 'Vivero Comunitario - Dipilto', lat: 14.44, lng: -86.36, area: 2.0, trees: 8500, species: 'Múltiples nativas', rate: 95, date: 'Ene 2026' },
-        { id: 23, name: 'Restauración Cuenca - Cusmapa', lat: 14.36, lng: -86.52, area: 35.0, trees: 2100, species: 'Especies ribereñas', rate: 85, date: 'Feb 2026' },
-        { id: 24, name: 'Reforestación Norte - Dipilto', lat: 14.46, lng: -86.37, area: 12.0, trees: 900, species: 'Pino, Roble', rate: 90, date: 'Abr 2026' },
-        { id: 25, name: 'Siembra Comunitaria - Cusmapa', lat: 14.38, lng: -86.51, area: 8.5, trees: 650, species: 'Madroño, Laurel', rate: 87, date: 'Mar 2026' }
+        { id: 20, name: 'Plantación Exitosa - Dipilto Sur', lat: 13.69, lng: -86.50, area: 18.0, trees: 1250, species: 'Guanacaste, Pino, Laurel', rate: 92, date: 'May 2026' },
+        { id: 21, name: 'Bosque Restaurado - Cusmapa Centro', lat: 13.29, lng: -86.65, area: 22.5, trees: 1580, species: 'Caoba, Madroño, Chaperno', rate: 88, date: 'May 2026' },
+        { id: 22, name: 'Vivero Comunitario - Dipilto', lat: 13.72, lng: -86.50, area: 2.0, trees: 8500, species: 'Múltiples nativas', rate: 95, date: 'Ene 2026' },
+        { id: 23, name: 'Restauración Cuenca - Cusmapa', lat: 13.27, lng: -86.66, area: 35.0, trees: 2100, species: 'Especies ribereñas', rate: 85, date: 'Feb 2026' },
+        { id: 24, name: 'Reforestación Norte - Dipilto', lat: 13.74, lng: -86.49, area: 12.0, trees: 900, species: 'Pino, Roble', rate: 90, date: 'Abr 2026' },
+        { id: 25, name: 'Siembra Comunitaria - Cusmapa', lat: 13.28, lng: -86.64, area: 8.5, trees: 650, species: 'Madroño, Laurel', rate: 87, date: 'Mar 2026' }
     ],
     protegidas: [
-        { id: 30, name: 'Reserva Forestal Dipilto', lat: 14.42, lng: -86.32, area: 156, level: 'Alto' },
-        { id: 31, name: 'Bosque Nuboso Cusmapa', lat: 14.38, lng: -86.56, area: 248, level: 'Máximo' }
+        { id: 30, name: 'Reserva Forestal Dipilto', lat: 13.72, lng: -86.49, area: 156, level: 'Alto' },
+        { id: 31, name: 'Bosque Nuboso Cusmapa', lat: 13.29, lng: -86.66, area: 248, level: 'Máximo' }
     ]
 };
 
@@ -356,13 +356,13 @@ function renderMapData() {
     let siembras = DATA.siembras;
 
     if (view === 'dipilto') {
-        fires = fires.filter(f => f.lat > 14.40);
-        talas = talas.filter(t => t.lat > 14.40 || (t.lat > 14.38 && t.lng < -86.40));
-        siembras = siembras.filter(s => s.lat > 14.38 && s.lng < -86.40);
+        fires = fires.filter(f => f.lat > 13.50);
+        talas = talas.filter(t => t.lat > 13.50);
+        siembras = siembras.filter(s => s.lat > 13.50);
     } else if (view === 'cusmapa') {
-        fires = fires.filter(f => f.lat < 14.40 || (f.lat < 14.45 && f.lng < -86.45));
-        talas = talas.filter(t => t.lat < 14.40 || (t.lat < 14.45 && t.lng < -86.45));
-        siembras = siembras.filter(s => s.lat < 14.40);
+        fires = fires.filter(f => f.lat < 13.50);
+        talas = talas.filter(t => t.lat < 13.50);
+        siembras = siembras.filter(s => s.lat < 13.50);
     }
 
     // Filter simulated
@@ -410,9 +410,9 @@ function renderMapData() {
     // Risk zones (simulated)
     if (isSim) {
         const riskZones = [
-            { lat: 14.45, lng: -86.34, area: 60, name: 'Riesgo Incendio - Dipilto Norte' },
-            { lat: 14.37, lng: -86.57, area: 45, name: 'Riesgo Tala - Bosque Fronterizo' },
-            { lat: 14.43, lng: -86.40, area: 35, name: 'Zona Vulnerable - Corredor Seco' }
+            { lat: 13.74, lng: -86.46, area: 60, name: 'Riesgo Incendio - Dipilto Norte' },
+            { lat: 13.26, lng: -86.67, area: 45, name: 'Riesgo Tala - Bosque Fronterizo' },
+            { lat: 13.50, lng: -86.57, area: 35, name: 'Zona Vulnerable - Corredor Seco' }
         ];
         riskZones.forEach(r => {
             const circle = L.circle([r.lat, r.lng], {
